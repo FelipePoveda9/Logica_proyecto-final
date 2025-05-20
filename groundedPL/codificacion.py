@@ -110,6 +110,23 @@ class ToPropositionalLogic:
         return formula_clases_no_vacias
 
 
+    def crear_interpretacion(self, letras:List[str]) -> dict:
+        '''
+        Crea un diccionario a partir de una lista de strings.
+        Input:
+            - lista, una lista de strings
+        Output:
+            - diccionario, un diccionario con los elementos de la lista como claves y sus índices como valores
+        '''
+        I = {}
+        for letra in letras:
+            if '-' in letra:
+                letra = letra.replace('-', '')
+                I[self.parse(letra)] = False
+            else:
+                I[self.parse(letra)] = True
+        return I
+
 class ToNumeric:
 
     def __init__(self, clausal:List[List[str]]) -> None:
