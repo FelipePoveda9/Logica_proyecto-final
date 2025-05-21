@@ -28,9 +28,6 @@ class ToPropositionalLogic:
             '∨': ' | '
         }
 
-    def to_nltk(self, sentence:str) -> Expression:
-        return self.parser.parse(sentence)
-
     def parse(self, sentence:str) -> str:
         if isinstance(sentence, str):
             sentence_lp = self.parser.parse(sentence)
@@ -49,6 +46,9 @@ class ToPropositionalLogic:
             print(f'La fórmula fundamentada es:\n{formula_fundamentada}')
             print(f'La fórmula codificada es:\n{formula_lp}')
         return formula_lp
+
+    def to_nltk(self, sentence:str) -> Expression:
+         return self.parser.parse(sentence)
 
     def leer(self, A:str) -> str:
             '''
@@ -108,8 +108,7 @@ class ToPropositionalLogic:
         else:
             formula_clases_no_vacias = f'({sentence_lp} & {afirmacion_existencial})'
         return formula_clases_no_vacias
-
-
+    
     def crear_interpretacion(self, letras:List[str]) -> dict:
         '''
         Crea un diccionario a partir de una lista de strings.
@@ -126,6 +125,7 @@ class ToPropositionalLogic:
             else:
                 I[self.parse(letra)] = True
         return I
+
 
 class ToNumeric:
 
