@@ -141,10 +141,14 @@ class ToNumeric:
         Output:
             - literal, un string
         '''
-        if literal[0] == '-':
-            return literal[1:]
-        else:
-            return literal
+        try:
+            if literal[0] == '-':
+                return literal[1:]
+            else:
+                return literal
+        except Exception as e:
+            print(f'Error: {literal} no es un literal')
+            raise e
 
     def no_negaciones(self) -> List[List[str]]:
         '''

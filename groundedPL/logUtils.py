@@ -271,6 +271,37 @@ class LogUtils:
             return form
 
     @staticmethod
+    def Ytoria_str(lista_forms:list) -> nltk.sem.logic:
+        '''
+        Toma una lista de formulas y las une mediante &.
+        Input:
+            - lista_forms, que es una lista de fórmulas como objetos de nltk
+        Output:
+            - formula, que es un string
+        '''
+        form = ''
+        inicial = True
+        for f in lista_forms:
+            if inicial:
+                form = f
+                inicial = False
+            else:
+                form = '(' + form + '&' + f + ')'
+        return form
+
+    @staticmethod
+    def Otoria_str(lista_forms):
+        form = ''
+        inicial = True
+        for f in lista_forms:
+            if inicial:
+                form = f
+                inicial = False
+            else:
+                form = '(' + form + '|' + f + ')'
+        return form        
+
+    @staticmethod
     def Otoria(lista_forms:list) -> nltk.sem.logic:
         '''
         Toma una lista de formulas y las une mediante |.
